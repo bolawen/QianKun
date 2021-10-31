@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './public-path'
+import actions from '@/shared/actions'
 
 Vue.config.productionTip = false
 let instance = null;
@@ -11,8 +12,16 @@ let instance = null;
 * @description: 渲染函数
 * 1. router 路由: 采用 hash 模式
 * 2. container 容器: #vueChildApp 为 html 模板中挂在应用的 ID ，必须一致且唯一，否则子项目无法独立运行
+* 3. 运行情况: 主应用在生命周期钩子中运行  /  子应用单独启动时运行
 */
-function render() {
+function render(props) {
+    if(props){
+        /**
+         * @description: 注入 actions 实例
+         * * 说明: 主应用挂在子应用时将会调用 render 方法，所以在 render 方法中将主应用的 actions 示例注入即可。
+         */        
+        actions.setActions(props);
+    }
     instance = new Vue({
         router,
         store,
