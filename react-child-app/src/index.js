@@ -3,13 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import "./public-path";
-
+import SharedModule from './shared/index';
 
 /**
 * @description: 渲染函数
 * 1. container 容器: #vueChildApp 为 html 模板中挂在应用的 ID ，必须一致且唯一，否则子项目无法独立运行
 */
-function render(){
+function render(props={}){
+     /**
+     * @description: shared 的两种情况
+     * a. 当传入的 shared 为空时，使用子应用自身的 shared
+     * b. 当传入的 shared 不为空时，主应用传入的 shared 将会重载子应用的 shared
+     */    
+    const { shared = SharedModule.getShared() } = props;
+    SharedModule.overloadShared(shared);
     ReactDOM.render(<App />,document.getElementById('reactChildApp'));
 }
 
