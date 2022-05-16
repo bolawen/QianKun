@@ -1,17 +1,10 @@
-## 基于 QianKun 的微前端项目
+## vite-react-load-actions 
+***
 
-- 主应用: 基于Vue搭建，路由为hash模式
-- 子应用一: 基于Vue搭建，路由为hash模式
-- 子应用二: 基于React搭建，路由为hash模式
+**vite-react-load-actions** 基于 Vite+React 的主应用，手动加载微应用，支持 Actions 通信
 
-### V1 版本 
 
-实现了基础的应用切换
+## vite-react-register-actions 
+***
 
-### V2 版本 
-
-基于 Actions 通信
-
-### V3 版本
-
-基于 Shared 通信
+**vite-react-register-actions** 基于 Vite+React 的主应用，监听路由加载微应用，支持 Actions 通信
